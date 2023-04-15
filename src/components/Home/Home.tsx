@@ -1,15 +1,11 @@
-import React, { FC, useCallback, useMemo, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import { Box, Paper, Typography } from '@mui/material'
 import TopAppBar from './TopAppBar'
 import './Home.css'
 import { Settings } from './SettingsDialog/SettingsDialog'
 import SettingsDialog from './SettingsDialog'
 
-interface iHome {
-
-}
-
-const Home: FC<iHome> = () => {
+const Home: FC = () => {
     const [settings, setSettings] = useState<Settings>({
         dogs: false,
         cats: false
