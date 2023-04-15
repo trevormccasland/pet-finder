@@ -4,6 +4,7 @@
     "description": "An app to help you find a pet",
     "main": "index.js",
     "scripts": {
+        "lint": "npx eslint .",
         "start": "webpack serve --port 3000",
         "build": "NODE_ENV=production webpack"
     },
@@ -12,7 +13,10 @@
     "devDependencies": {
         "@types/react": "^18.0.35",
         "@types/react-dom": "^18.0.11",
+        "@typescript-eslint/eslint-plugin": "^5.58.0",
+        "@typescript-eslint/parser": "^5.58.0",
         "css-loader": "^6.7.3",
+        "eslint": "^8.38.0",
         "html-webpack-plugin": "^5.5.0",
         "mini-css-extract-plugin": "^2.7.5",
         "ts-loader": "^9.4.2",
