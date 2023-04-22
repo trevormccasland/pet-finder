@@ -8,28 +8,19 @@ export interface Settings {
 
 interface iSettingsDialog {
     open: boolean
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
-    settings: Settings,
-    setSettings: React.Dispatch<React.SetStateAction<Settings>>
+    settings: Settings
+    onClose: () => void
+    onSave: (catsChecked: boolean, dogsChecked: boolean) => void
 }
 
-const SettingsDialog: FC<iSettingsDialog> = ({ open, setOpen, settings, setSettings }) => {
+const SettingsDialog: FC<iSettingsDialog> = ({ open, settings, onClose, onSave }) => {
     const [catsChecked, setCatsChecked] = useState(settings.cats)
     const [dogsChecked, setDogsChecked] = useState(settings.dogs)
     const handleCatsChecked = useCallback((event: React.ChangeEvent<HTMLInputElement>) => setCatsChecked(event.target.checked), [setCatsChecked])
     const handleDogsChecked = useCallback((event: React.ChangeEvent<HTMLInputElement>) => setDogsChecked(event.target.checked), [setDogsChecked])
 
-    const handleClose = useCallback(() => setOpen(false), [setOpen])
-    const handleSaveClick = useCallback(() => {
-        setSettings({
-            cats: catsChecked,
-            dogs: dogsChecked
-        })
-        setOpen(false)
-    }, [catsChecked, dogsChecked, setOpen, setSettings])
 
-
-    return <Dialog open={open} onClose={handleClose} maxWidth='xs' fullWidth>
+    return <Dialog open={open} onClose={onClose} maxWidth='xs' fullWidth>
         <DialogTitle>Settings</DialogTitle>
         <Divider />
         <DialogContent>
@@ -50,7 +41,7 @@ const SettingsDialog: FC<iSettingsDialog> = ({ open, setOpen, settings, setSetti
             </List>
         </DialogContent>
         <DialogActions>
-            <Button onClick={handleSaveClick}>Save</Button>
+            <Button onClick={() => onSave(catsChecked, dogsChecked)}>Save</Button>
         </DialogActions>
 
     </Dialog>

@@ -4,10 +4,11 @@ import { AccountCircle } from '@mui/icons-material'
 import './TopAppBar.css'
 
 interface iTopAppBar {
-    onSettingsClick: () => void 
+    onSettingsClick: () => void
+    onTitleClick: () => void
 }
 
-const TopAppBar: FC<iTopAppBar> = ({ onSettingsClick }) => {
+const TopAppBar: FC<iTopAppBar> = ({ onSettingsClick, onTitleClick }) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const handleClose = useCallback(() => setAnchorEl(null), [])
     const handleSettingsClick = useCallback(() => {
@@ -17,7 +18,7 @@ const TopAppBar: FC<iTopAppBar> = ({ onSettingsClick }) => {
     const handleMenu = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => setAnchorEl(event.currentTarget), [])
     return <AppBar>
         <Toolbar>
-            <Typography  variant='h6'>
+            <Typography className='topAppBarTitle' onClick={onTitleClick} variant='h6'>
                 Pet Finder
             </Typography>
             <div className='accountCircle'>

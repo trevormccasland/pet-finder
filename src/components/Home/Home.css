@@ -1,7 +1,12 @@
-.homeContainer {
+.homeBox {
     margin-top: 64px;
 }
-
+.homeContainer {
+    margin-top: 80px;
+}
+.homeContent {
+    margin-top: 16px;
+}
 .viewSelectedBanner {
     visibility: visible;
     opacity: 1;
@@ -10,6 +15,8 @@
     transition: height 0.3s ease-in;
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 64px;
 }
 
 .viewSelectedBannerContent {
