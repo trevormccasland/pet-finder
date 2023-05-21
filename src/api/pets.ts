@@ -12,7 +12,7 @@ export interface Cat {
     name: string
     weight: Measurement
     temperament: string
-    image: Image
+    image: Image | null
 }
 
 export interface Dog {

@@ -37,10 +37,12 @@ const Home: FC = () => {
     const handleViewSelectedClicked = useCallback(() => setViewSelected(true), [setViewSelected])
     const onSettingsClick = useCallback(() => setOpenSettingsDialog(true), [setOpenSettingsDialog])
     const onSettingsSave = useCallback((catsChecked: boolean, dogsChecked: boolean) => {
-        setSettings({
-            cats: catsChecked,
-            dogs: dogsChecked
-        })
+        if (!(settings.cats === catsChecked && settings.dogs === dogsChecked)){
+            setSettings({
+                cats: catsChecked,
+                dogs: dogsChecked
+            })
+        }
         
         setOpenSettingsDialog(false)
     }, [setSettings, setOpenSettingsDialog, setCurrentPet, pets])
