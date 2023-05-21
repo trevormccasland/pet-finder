@@ -32,7 +32,7 @@ const PetCard: FC<iPetCard> = ({ pet, petType, onCheckClicked, onClearClicked })
                 <Grid container justifyContent={'center'} style={{marginBottom: '24px'}}>
                     <Typography variant='h5'>{pet.name}</Typography>
                 </Grid>
-                <Box component={"img"} src={pet.image.url} sx={{height: '70vh', aspectRatio: 'auto'}} />
+                {pet.image ? <Box component={"img"} src={pet.image.url} sx={{height: '70vh', aspectRatio: 'auto'}} /> : <Typography>No Image</Typography>}
             </CardContent>
             <CardActions>
                 <Grid container justifyContent={'space-evenly'}>
