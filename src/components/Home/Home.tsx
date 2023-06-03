@@ -92,7 +92,7 @@ const Home: FC = () => {
         }
         if (settings.dogs && !settings.cats && pets.dogs) {
             setCurrentPet(getRandomPet(pets.dogs))
-        } else if (settings.cats && pets.cats) {
+        } else if (!settings.dogs && settings.cats && pets.cats) {
             setCurrentPet(getRandomPet(pets.cats))
         } else {
             setCurrentPet(getRandomPet([...(pets?.cats ?? []), ...(pets?.dogs ?? [])]))
